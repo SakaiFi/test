@@ -2,7 +2,7 @@
 
 echo "問題1</br></br>";
 
-$numbers = array(1,2,3);
+$numbers = array(1,2,3,4,5);
 
 function forSum($numbers){
     
@@ -24,19 +24,23 @@ function whileSum($numbers){
     return $sum;
 }
 
-echo "whileループを使った関数　合計値 = ".whileSum($numbers);
+echo "whileループを使った関数　合計値 = ".whileSum($numbers)."</br>";
 
-//　再帰の問題は解けなかったです。
-function recursion($numbers){
-    if($count>=count($numbers)){
-        
+
+function recursionSum($numbers){
+    
+    if(count($numbers)==0){
+        return 0;
+    }
+    else if(count($numbers)==1){
+        return $numbers[0];
     }
     else{
-        recursion($numbers);
+        return $numbers[0]+recursionSum(array_slice($numbers,1));
     }
-    return $sum;
+    
 }
 
-
-echo "再帰を使った関数　合計値 =".recursionSum($numbers);
+echo "再帰を使った関数　合計値 = ";
+echo recursionSum($numbers);
 
